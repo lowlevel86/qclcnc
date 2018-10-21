@@ -372,9 +372,19 @@ int readInstructions(struct gcode *g, struct encoder x, struct encoder y, struct
    linearSpeed = feedRate;
    
    // return error if out of bounds
-   if (((xEnd > cfg.X_MAX_LIMIT) || (xEnd < cfg.X_MIN_LIMIT)) ||
-       ((yEnd > cfg.Y_MAX_LIMIT) || (yEnd < cfg.Y_MIN_LIMIT)) ||
-       ((zEnd > cfg.Z_MAX_LIMIT) || (zEnd < cfg.Z_MIN_LIMIT)))
+   if ((xEnd > cfg.X_MAX_LIMIT) || (xEnd < cfg.X_MIN_LIMIT))
+   {
+      motorCtrlReset();
+      return OUT_OF_BOUNDS;
+   }
+   
+   if ((yEnd > cfg.Y_MAX_LIMIT) || (yEnd < cfg.Y_MIN_LIMIT))
+   {
+      motorCtrlReset();
+      return OUT_OF_BOUNDS;
+   }
+   
+   if ((zEnd > cfg.Z_MAX_LIMIT) || (zEnd < cfg.Z_MIN_LIMIT))
    {
       motorCtrlReset();
       return OUT_OF_BOUNDS;

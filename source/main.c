@@ -662,6 +662,7 @@ void *printDisplay()
          
          
          if (gCodeRet != ERR_NO_FEED_RATE)
+         if (gCodeRet != OUT_OF_BOUNDS)
          if (gInc != g.codeInc)
          {
             // find where the end of line will be for the g-code
@@ -708,6 +709,15 @@ void *printDisplay()
          if (gCodeRet == ERR_NO_FEED_RATE)
          {
             printf("\n\rG-code error, no feed rate.\n\r");
+            printf("Press [Spacebar] to continue...\n\r");
+            
+            displayGcodeRet = FALSE;
+         }
+         
+         if (displayGcodeRet)
+         if (gCodeRet == OUT_OF_BOUNDS)
+         {
+            printf("\n\rError, out of bounds.\n\r");
             printf("Press [Spacebar] to continue...\n\r");
             
             displayGcodeRet = FALSE;
@@ -1062,7 +1072,9 @@ void *readKbd()
       {
          if (ch == 32) // spacebar
          {
-            if ((gCodeRet == PROGRAM_END) || (gCodeRet == ERR_NO_FEED_RATE))
+            if ((gCodeRet == PROGRAM_END) ||
+                (gCodeRet == ERR_NO_FEED_RATE) ||
+                (gCodeRet == OUT_OF_BOUNDS))
             {
                machineState = MAIN_MENU_MODE;
                continue;
@@ -1499,7 +1511,8 @@ int main(int argCnt, char **args)
          
          if ((gCodeRet == ERR_NO_FEED_RATE) ||
              (gCodeRet == PROGRAM_PAUSE) ||
-             (gCodeRet == PROGRAM_END))
+             (gCodeRet == PROGRAM_END) ||
+             (gCodeRet == OUT_OF_BOUNDS))
          {
             machineState = GCODE_WAIT_MODE;
             displayGcodeRet = TRUE;
