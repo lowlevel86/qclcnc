@@ -1557,6 +1557,8 @@ int main(int argCnt, char **args)
    gpioSetAlertFunc(cfg.Z_ENCODER_B, 0);
    gpioSetAlertFunc(cfg.Z_ENCODER_I, 0);
    
+   gpioTerminate();
+   
    // block until all threads complete
    pthread_join(printDisplayThreadID, NULL);
    pthread_join(keyboardThreadID, NULL);

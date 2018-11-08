@@ -12,20 +12,25 @@ M0
 M17 X Y Z
 
 
-(G92 set current position as 0,0,0)
-G92 X0.00000 Y0.00000 Z0.00000
-
 (G90 use absolute positioning)
 G90
+G0 X1.00000 Y1.00000 Z-1.00000
+
+(G92 set current position as 1,1,-1)
+G92 X1.00000 Y1.00000 Z-1.00000
+
 G0 X15.00000 Y15.00000 Z-15.00000
 
 (G91 use relative positioning)
 G91
 G1 X0.00000 Y5.00000 Z0.00000 F100.0
 
-(Go back to location 0,0,0 at a speed of 150 mm/min)
+(G4 wait 1 second, 1000 ms)
+G4 1000
+
+(Go back to location 1,1,-1 at a speed of 150 mm/min)
 G90
-G1 X0.00000 Y0.00000 Z0.00000 F150.0
+G1 X1.00000 Y1.00000 Z-1.00000 F350.0
 
 
 (M2 ends program)
