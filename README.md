@@ -50,7 +50,7 @@ It might be easier to try driving a single motor and then reading a single encod
 #### Configuring
 An example configuration file can be found with the source code.  
 The example code in "Read_Encoder_Example" can help you find the number of mechanical degree units the encoder has moved.  
-The example code in "Stepper_Ctrl_Example" can help you find the number of input pulses given to a stepper motor.  
+The example code in "Stepper_Ctrl_Example" can help you find the number of input pulses given to a stepper motor driver.  
 
 #### Supported G-code
 An example .ngc file can be found with the source code containing the possible g-codes.  
