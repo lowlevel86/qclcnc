@@ -39,6 +39,26 @@ qclcnc is cnc software for the raspberry pi that works in the terminal.
 #### Schematic
 ![](./imgs/schematic.png)
 
+#### Getting Started
+The printer port cable is for the motor driver board.  
+The internal 5 pin usb cables are for the encoders.  
+
+It might be easier to try driving a single motor and then reading a single encoder using the example code.  
+![](./imgs/step_schematic.png)
+![](./imgs/enc_schematic.png)
+
+#### Configuring
+An example configuration file can be found with the source code.  
+The example code in "Read_Encoder_Example" can help you find the number of mechanical degree units the encoder has moved.  
+The example code in "Stepper_Ctrl_Example" can help you find the number of input pulses given to a stepper motor.  
+
+#### Supported G-code
+An example .ngc file can be found with the source code containing the possible g-codes.  
+
+#### The Auto Align Feature Using The Encoder Index Pulse
+In the align/configure menu there is a way to get the index offset for each axis and then once you have that you can use "quick index pulse auto alignment" every time you run your machine to get an exact location.  
+![](./imgs/autoAlign.png)
+
 CAD Software:  
 [https://github.com/lowlevel86/blender249b-CAD](https://github.com/lowlevel86/blender249b-CAD)
 

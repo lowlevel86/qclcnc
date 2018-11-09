@@ -35,5 +35,19 @@
 <img src="./imgs/schematic.png" />
 
 </div>
+<h4 id="getting-started">Getting Started</h4>
+<p>The printer port cable is for the motor driver board.<br />
+The internal 5 pin usb cables are for the encoders.</p>
+<p>It might be easier to try driving a single motor and then reading a single encoder using the example code.<br />
+<img src="./imgs/step_schematic.png" /> <img src="./imgs/enc_schematic.png" /></p>
+<h4 id="configuring">Configuring</h4>
+<p>An example configuration file can be found with the source code.<br />
+The example code in &quot;Read_Encoder_Example&quot; can help you find the number of mechanical degree units the encoder has moved.<br />
+The example code in &quot;Stepper_Ctrl_Example&quot; can help you find the number of input pulses given to a stepper motor.</p>
+<h4 id="supported-g-code">Supported G-code</h4>
+<p>An example .ngc file can be found with the source code containing the possible g-codes.</p>
+<h4 id="the-auto-align-feature-using-the-encoder-index-pulse">The Auto Align Feature Using The Encoder Index Pulse</h4>
+<p>In the align/configure menu there is a way to get the index offset for each axis and then once you have that you can use &quot;quick index pulse auto alignment&quot; every time you run your machine to get an exact location.<br />
+<img src="./imgs/autoAlign.png" /></p>
 <p>CAD Software:<br />
 <a href="https://github.com/lowlevel86/blender249b-CAD" class="uri">https://github.com/lowlevel86/blender249b-CAD</a></p>
