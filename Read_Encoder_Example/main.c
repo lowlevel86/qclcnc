@@ -123,4 +123,6 @@ int main(int argc, char *argv[])
    gpioSetAlertFunc(ENCODER_B, 0);
    
    gpioTerminate();
+   
+   return 0;
 }
