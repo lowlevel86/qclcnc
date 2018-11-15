@@ -282,10 +282,14 @@ void *printDisplay()
    int gfileIncBasePrior = 0;
    int noWorkingDir = TRUE;
    int machineStatePrior = -1;
+   int machineStateChange = FALSE;
    
    
    while (TRUE)
    {
+      if (machineState != machineStatePrior)
+      machineStateChange = TRUE;
+      
       /////////////////////////////////////////////// MAIN_MENU_MODE
       if (machineState == MAIN_MENU_MODE)
       {
@@ -768,9 +772,14 @@ void *printDisplay()
       printf("Z axis encoder error\n\r");
       
       
-      machineStatePrior = machineState;
+      if (machineStateChange)
+      {
+         machineStatePrior = machineState;
+         machineStateChange = FALSE;
+      }
+      
       gpioDelay(2000);
-   
+      
       if (exitProg)
       break;
    }
@@ -1063,6 +1072,9 @@ void *readKbd()
                machineState = MAIN_MENU_MODE;
             }
          }
+         
+         if (ch == 27) // Esc
+         gfileSelectNum = -1;
       }
       
       
